@@ -1,7 +1,16 @@
 (function() {
     function SongPlayer() {
+        
+        /**
+        * @desc Exposed Song Player object
+        * @type {object}
+        */
         var SongPlayer = {};
         
+        /**
+        * @desc Currently playing song information
+        * @type {object}
+        */
         var currentSong = null;
         
         /**
@@ -29,18 +38,37 @@
             currentSong = song;
         };
         
+        /**
+        * @function playSong
+        * @desc Plays currentBuzzObject and sets the song playing property to true
+        * @param {Object} song
+        */
+        var playSong = function(song) {
+            currentBuzzObject.play();
+            song.playing = true;
+        };
+        
+        /**
+        * @method play
+        * @desc public method used to either play or unpause a song
+        * @param {Object} song
+        */
         SongPlayer.play = function(song) {
             if (currentSong !== song) {
                 setSong(song);
-                currentBuzzObject.play();
-                song.playing = true;
+                playSong(song);
             } else if (currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                    playSong(song);
                 }
             }
         };
         
+        /**
+        * @method pause
+        * @desc public method to pause a playing song
+        * @param {Object} song
+        */
         SongPlayer.pause = function(song) {
             currentBuzzObject.pause();
             song.playing = false;
