@@ -34,6 +34,10 @@
                     return percent + "%";
                 };
                 
+                scope.thumbStyle = function() {
+                    return {left: percentString()};
+                };
+                
                 scope.fillStyle = function() {
                     return {width: percentString()};
                 };
@@ -47,8 +51,10 @@
                     $document.bind('mousemove.thumb', function(event) {
                         var percent = calculatePercent(seekBar, event);
                         scope.$apply(function() {
+                        
                             scope.value = percent * scope.max;
                         });
+                        
                     });
                 
                 
