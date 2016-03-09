@@ -86,6 +86,12 @@
         SongPlayer.currentTime = null;
         
         /**
+        * @desc Current player volume
+        * @type {Number}
+        */
+        SongPlayer.volume = null;
+        
+        /**
         * @method play
         * @desc public method used to either play or unpause a song
         * @param {Object} song
@@ -154,6 +160,17 @@
         SongPlayer.setCurrentTime = function(time) {
             if (currentBuzzObject) {
                 currentBuzzObject.setTime(time);
+            }
+        };
+        
+        /**
+        * @function setVolume
+        * @desc Set the volume (out of 100) of the player
+        * @param {Number} volume
+        */
+        SongPlayer.setVolume = function(volume){
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
             }
         };
         
