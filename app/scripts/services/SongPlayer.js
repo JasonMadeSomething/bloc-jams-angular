@@ -40,6 +40,8 @@
                 });
             });
             
+            currentBuzzObject.bind('ended', SongPlayer.next);
+            
             SongPlayer.currentSong = song;
         };
         
