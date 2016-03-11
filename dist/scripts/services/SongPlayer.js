@@ -94,6 +94,12 @@
         SongPlayer.volume = null;
         
         /**
+        * @desc Mute state of the player
+        * @type {Boolean}
+        */
+        SongPlayer.mute = false;
+        
+        /**
         * @method play
         * @desc public method used to either play or unpause a song
         * @param {Object} song
@@ -173,8 +179,23 @@
         SongPlayer.setVolume = function(volume){
             if (currentBuzzObject) {
                 currentBuzzObject.setVolume(volume);
+                if( volume > 0 ){
+                    SongPlayer.mute = false;
+                    currentBuzzObject.unmute();
+                }
             }
         };
+        
+        /**
+        * @function toggleMute
+        * @desc Toggles the mute property on the playing song
+        */
+        SongPlayer.toggleMute = function() {
+            if (currentBuzzObject) {
+                currentBuzzObject.toggleMute();
+                SongPlayer.mute = !(SongPlayer.mute);
+            }
+        }
         
         return SongPlayer;
     }
