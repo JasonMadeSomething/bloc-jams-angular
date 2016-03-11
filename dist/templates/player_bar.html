@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="control-group volume">
-            <span class="ion-volume-high icon"></span>
+            <volume-button mute="{{ playerBar.songPlayer.muted }}" on-mute="playerBar.songPlayer.toggleMute()"></volume-button>
             <seek-bar value="{{ playerBar.songPlayer.volume }}" max="100" on-change="playerBar.songPlayer.setVolume(value)"></seek-bar>
         </div>
     </div>
